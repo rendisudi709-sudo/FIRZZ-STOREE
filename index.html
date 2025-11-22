@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Top Up Center</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f6fa;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background: #4e73df;
+            padding: 20px;
+            color: white;
+            text-align: center;
+            font-size: 24px;
+        }
+        .container {
+            max-width: 450px;
+            margin: 25px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        .title {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        input, select {
+            width: 100%;
+            padding: 12px;
+            margin: 8px 0 18px;
+            border-radius: 10px;
+            border: 1px solid #ccc;
+            font-size: 15px;
+        }
+        .nominals {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+        .nominal {
+            background: #e9ecf7;
+            padding: 14px;
+            border-radius: 10px;
+            text-align: center;
+            cursor: pointer;
+            font-weight: bold;
+            border: 2px solid transparent;
+        }
+        .nominal.active {
+            border-color: #4e73df;
+            background: #dce4ff;
+        }
+        button {
+            width: 100%;
+            padding: 14px;
+            background: #4e73df;
+            color: white;
+            font-size: 18px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+        button:hover {
+            opacity: 0.9;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 25px;
+            font-size: 13px;
+            color: grey;
+        }
+    </style>
+</head>
+<body>
+
+<header>Top Up Center</header>
+
+<div class="container">
+    <div class="title">Masukkan ID Game</div>
+    <input type="text" id="userId" placeholder="Contoh: 12345678">
+
+    <div class="title">Pilih Nominal</div>
+    <div class="nominals">
+        <div class="nominal" onclick="selectNominal(this)">86 Diamond</div>
+        <div class="nominal" onclick="selectNominal(this)">172 Diamond</div>
+        <div class="nominal" onclick="selectNominal(this)">257 Diamond</div>
+        <div class="nominal" onclick="selectNominal(this)">344 Diamond</div>
+    </div>
+
+    <button onclick="submitForm()">Beli Sekarang</button>
+
+    <p id="result" style="margin-top:20px;font-weight:bold;"></p>
+</div>
+
+<div class="footer">© 2025 Top Up Center - Tampilan Saja (Non-aktif)</div>
+
+<script>
+    let selected = null;
+
+    function selectNominal(el) {
+        if (selected) selected.classList.remove("active");
+        selected = el;
+        el.classList.add("active");
+    }
+
+    function submitForm() {
+        const uid = document.getElementById("userId").value;
+
+        if (!uid) {
+            alert("Masukkan ID dulu!");
+            return;
+        }
+        if (!selected) {
+            alert("Pilih nominal dulu!");
+            return;
+        }
+
+        document.getElementById("result").innerText =
+            "Pesanan berhasil diinput (Tampilan Saja, tidak memproses top up).";
+    }
+</script>
+
+</body>
+</html>
